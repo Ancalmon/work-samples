@@ -1,0 +1,88 @@
+/* File Name: StringMethods
+ * Author: Luke Fitzsimmons
+ * Date: 1/24/2017
+ * Program Description: This is a methods class that has no main and is used to 
+ * support other classes.
+ */
+package lab3A;
+import java.util.*;
+import javax.swing.JOptionPane;
+
+//Recreate a new parseScannerDouble in the StringMethods class. the problems is 
+//switching JOptionPane data validation methods with Scanner validation methods.
+
+public class StringMethods {
+   public static int parseInt(String statusString){
+       int status = 0;
+       int i;
+         
+    for ( i=0; i<statusString.length() ;i++) {
+            if (!Character.isDigit(statusString.charAt(i))) {
+                System.out.println("This is not a number, please enter a number");
+                statusString = JOptionPane.showInputDialog("This is not an"
+                        + " integer, please enter a number.");
+                i=0;              
+}
+    }
+status = Integer.parseInt(statusString);
+
+return status;
+}
+   //This is recursive method that calls itself if the user enters a null answer.
+   //It will continue to call itself until the user enters a non null answer.
+   //It also uses a scanner to recieve user input and if that input is non null
+   //it will make the input upper case and check the first character entered, 
+   //then return that character. 
+   public static char nullValidation(){
+       char initializedVariable = ' ';
+       System.out.println("Please enter an A, B, C, or D.");
+       String anotherVariable;
+       Scanner scan = new Scanner(System.in);
+       anotherVariable = scan.nextLine();
+       
+       if (anotherVariable.length() <1){
+           nullValidation();
+       }
+       else {
+            initializedVariable = anotherVariable.toUpperCase().charAt(0);
+               }
+       return initializedVariable;
+   }
+   
+  public static double parseDouble(String statusString){
+       double status = 0;
+       int i;
+         
+    for ( i=0; i<statusString.length() ;i++) {
+            if (!Character.isDigit(statusString.charAt(i))){
+                    
+                if (statusString.charAt(i)!= '.') { 
+                    System.out.println("This is not a double, please enter a double");
+                    statusString = JOptionPane.showInputDialog("This is not a"
+                        + " double, please enter a number.");
+                    i=0;              
+                }
+            }
+    } 
+    status = Double.parseDouble(statusString);
+    return status;
+}
+ 
+  public static int parseScannerInt(String statusString){
+       int status;
+       Scanner input = new Scanner(System.in);
+       for (int i=0; i<statusString.length(); i++) {
+            if (!Character.isDigit(statusString.charAt(i))) {
+                System.out.println("This is not a number, please enter a number");
+                statusString = input.nextLine();
+                parseScannerInt(statusString);
+            }
+            
+       }
+            status = Integer.parseInt(statusString);
+
+            return status;
+  
+ }
+ 
+}
