@@ -1,0 +1,102 @@
+/* File Name: MyFile
+ * Author: Luke Fitzsimmons
+ * Date: 3/25/2017
+ *Program Description: This is a program that creates a file named MyFile.txt
+ *if MyFile.txt does not exist yet. It will write 100 integers which are created 
+ *randomly inside the file using text I/O. Integers are eached seperated by a 
+ *space in the file. Then the data is read back from the file and is
+ * sorted and displayed. Various methods are used to write the data into the
+ *files, read data from the files, and print the sorted data from the files. 
+ */
+package Lab3B;
+
+import java.io.FileWriter;
+import java.util.Random;
+import java.util.Scanner;
+import java.io.FileReader;
+
+public class MyFile {
+   //This is the main method and it called the other methods used in this program.
+   public static void main(String[] args) throws Exception {
+    java.io.File file = new java.io.File("MyFile.txt");
+    //This exits the program if the file named MyFile.txt already exists.
+    if (file.exists()) {
+        System.out.println("File already exists");
+        System.exit(0);
+        }
+        //Create and initialize variables and the array numOfInts.
+        String myFile = "MyFile.txt";
+        int randomNumbers = 0;     //Initialized number of random ints to zero.
+        int temp;
+        int[] numOfInts = new int [100]; //Create an array to hold 100 ints. 
+        
+        //These are the called methods. 
+        GenerateAndSortNumbers(numOfInts);
+        WriteNumbersToFile(numOfInts, myFile);
+        ReadNumbersFromFile(file);  
+    }
+   
+    //This method creates and sorts random ints to be filled into the array numOfInts
+    public static void GenerateAndSortNumbers (int numOfInts[]){
+        /*Create a for loop for creating 100 random ints and putting them into 
+        an array named numOfInts.*/
+        for(int i = 0; i < numOfInts.length; i++){ 
+              Random rnd = new Random(); //rnd is a new Random object.
+              //Creates 100 random ints to put in the array named numOfInts.   
+              numOfInts[i] = rnd.nextInt(100); 
+        }
+        //This is a sort method that sorts the random ints in the array numOfInts.
+        java.util.Arrays.sort(numOfInts);
+    }
+    
+    //This method writes the randomly generated numbers inside of the numOfInts array
+    //into the file named 
+    public static boolean WriteNumbersToFile(int numOfInts[], String myFile) {   
+        //Inform the user what the file name is with a print statement.
+        System.out.println("The File name is: " + myFile);
+        //Create the File named myFile.
+           try{ 
+            //Create a PrinterWriter object named "outPutFile" for the FileWriter
+            //named myFileWriter.
+            try ( // Open the file myFile with the FileWriter object named myFileWriter.
+                FileWriter myFileWriter = new FileWriter(myFile)) {
+                //Create a for loop that will fill myFileWriter with the array numOfInts.
+                for (int i = 0; i < numOfInts.length; i++) {
+                    myFileWriter.write(numOfInts[i] + " ");
+                }
+                //close myFileWriter
+                myFileWriter.close();
+            }
+             System.out.println("Data written to the file.");
+             return true;
+           }
+           catch(Exception e) {
+               return false;
+           }
+    }
+    //This method reads from the file that was just created. 
+    public static void ReadNumbersFromFile(java.io.File file){
+            //Start the try catch for the FileReader.
+          try {
+             //Create a FileReader named newFileReader that will read the file
+             //named myFileWriter that was just created.
+             FileReader newFileReader = new FileReader(file);
+             //Create a new array to fill with the contents of the array in myFileWriter.
+             int[] newArray = new int[100]; 
+             //Creat a scanner that will take in input from newFileReader
+             Scanner input = new Scanner(newFileReader);
+             //Create a for loop that will fill the new array with the input from
+             //myFileReader and then print out that input. 
+             for (int i = 0; i < newArray.length; i++) {
+                newArray[i] = input.nextInt();
+                System.out.println(newArray[i]);
+             }
+             newFileReader.close(); //close newFileReader.
+          }
+        //Put the catch for the try looking for the Exception named exception. 
+        catch(Exception exceptions){
+               System.out.println("Problems");
+        }
+    } 
+}
+
