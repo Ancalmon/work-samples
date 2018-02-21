@@ -1,0 +1,346 @@
+/* File Name: DriverExam
+ * Author: Luke Fitzsimmons
+ * Date: 3/1/2017
+ * Program Description:
+ * This is a program for the local DMV that tests student's 
+ * on their knowledge of driving laws. It holds the grades of the written 
+ * written portion of the driver's license exam. The exam has 20 multiple choice 
+ * questions and the answers are held in this class and called in DriverExamTest.java.
+ * The exam answers are held in an array field, the class also has an array 
+ * field for student's answers. This class has the following methods: passed, 
+ * totalCorrect, totalIncorrect, and questionsMissed. Passed returns true if the 
+ * student passes the exam, and false if the student fails the exam. In order to pass
+ * the student must answer 15 out of the 20 questions correctly. totalCorrect 
+ * returns the total number of correctly answered questions. totalMissed returns 
+ * the total number of incorrectly answered questions. questionsMissed holds an 
+ * int array containing the question numbers of the questions that the student 
+ * missed. This class calls the StringMethods class for data validation.
+ */
+package Lab2A;
+ 
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.*;
+import java.lang.Object;
+import java.util.AbstractCollection;
+
+public class DriverExam {
+    //This creates a constant ArrayList named KEY that holds the correct answers
+    //to the exam questions.
+    private static final List<Character> KEY = Collections.unmodifiableList( new 
+        ArrayList<Character>() {{
+            add('B');
+            add('D');
+            add('A');
+            add('A');
+            add('C');
+            add('A');
+            add('B');
+            add('A');
+            add('C');
+            add('D');
+            add('B');
+            add('C');
+            add('D');
+            add('A');
+            add('D');
+            add('C');
+            add('C');
+            add('B');
+            add('D');
+            add('A');
+        }});
+    //Here are the declarations. They are private so that students cannot see
+    //the exam answers or mess with how grades are calculated. 
+    private final int LIMIT = 20;
+    private final int PASSINGGRADE = 15;
+    private boolean passed;
+    private int totalCorrect = 0;
+    private int totalIncorrect = LIMIT - totalCorrect;
+    private ArrayList<Character> studentAnswers = new ArrayList<>();
+    private char answer;
+
+    //This is a no arguments constructor for the answers method. 
+    public DriverExam(){
+        answers();
+    }
+    //This method feeds all the studentAnswers into the ArrayList studentAnswers.
+    public DriverExam(ArrayList<Character> studentAnswers){
+        this.studentAnswers.addAll(studentAnswers);
+        
+    }
+    //This is a getter method that returns the studentAnswers ArrayList.
+    public ArrayList getStudentAnswers(){
+        return this.studentAnswers;
+    }
+    char question1;
+    char question2;
+    char question3;
+    char question4;
+    char question5;
+    char question6;
+    char question7;
+    char question8;
+    char question9;
+    char question10;
+    char question11;
+    char question12;
+    char question13;
+    char question14;
+    char question15;
+    char question16;                                        
+    char question17;        
+    char question18;        
+    char question19;
+    char question20;
+   
+    
+    public void answers(){
+        
+        Scanner scan = new Scanner(System.in);
+            // Get the answer to question 1.
+      System.out.println("Is it okay to hit cyclists?: \nEnter A for Yes, \nEnter B "
+              + "for No, \nEnter C for Maybe, \nEnter D for Yes if they are going "
+              + "20 under the speed limit and there is too much traffic to go "
+              + "around them.");
+      System.out.println("\n1. Enter your answer.");
+            //Here question1 calls the method nullValidation in the StringMethods
+            //class where the user input wil be recieved, determined not to be 
+            //a null, and the first character of the user input is made upper 
+            //case and returned. Then question1 will be added to the ArrayList
+            //studentAnswers. 
+            question1 = StringMethods.nullValidation();
+            studentAnswers.add(question1);
+              
+      System.out.println("Does playing Mario kart qualify you to drive a car? "
+              + "\nEnter A for Yes, \nEnter B for No, \nEnter C for Maybe, \nEnter D for"
+              + " Absolutely! There is no better educational program for learning "
+              + "to drive! ");
+      System.out.println("\n2. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question2 = StringMethods.nullValidation();
+            studentAnswers.add(question2);
+      
+      System.out.println("If your car comes equiped with a trunk monkey \n" +
+               "is it okay to leave it unlocked in a sketchy neighborhood? " +
+              "\nEnter A for Yes, \nEnter B for No, \nEnter C for Maybe, \nEnter D "
+              + "You bet! I've seen the commercials.");
+      System.out.println("\n3. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question3 = StringMethods.nullValidation();
+            studentAnswers.add(question3);
+      
+      System.out.println("Should you stop at stop signs? \nEnter A for Yes, "
+              + "\nEnter B for No, \nEnter C for Maybe, \nEnter D for Are you kidding "
+              + "me? No one actually stops for stop signs.");
+      System.out.println("\n4. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question4 = StringMethods.nullValidation();
+            studentAnswers.add(question4);
+      
+      System.out.println("Do you have to follow speed limits? \nEnter A for Yes, "
+              + "\nEnter B for No, \nEnter C for Maybe, \nEnter D for Speed limits are "
+              + "everyone except me.");
+      System.out.println("\n5. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question5 = StringMethods.nullValidation();
+            studentAnswers.add(question5);
+      
+      System.out.println("If you see a cop following you with his lights flashing "
+              + "should you pull over? \nEnter A for Yes, \nEnter B for No, \nEnter C "
+              + "for Maybe, \nEnter D for Naw man, he just thinks your ride is cool"
+              + " and is letting everyone know.");
+      System.out.println("\n6. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question6 = StringMethods.nullValidation();
+            studentAnswers.add(question6);
+      
+      System.out.println("If you see a road sign that says 'Wrong way do not enter,'"
+              + "is it okay to drive on it? \nEnter A for Yes, \nEnter B for No,"
+              + " \nEnter C for Maybe, \nEnter D for That sign is not the boss of"
+              + " you, you do what ever you want.");
+      System.out.println("\n7. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question7 = StringMethods.nullValidation();
+            studentAnswers.add(question7);
+      
+      System.out.println("If you see a hitchhiker on the side of the road with "
+              + "his thumb out should you pick him up? \nEnter A for Yes, \nEnter"
+              + " B for No, \nEnter C for Maybe, \nEnter D for Only if he has an"
+              + " axe and crazy look in his eyes, then you know it will be exciting.");
+      System.out.println("\n8. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question8 = StringMethods.nullValidation();
+            studentAnswers.add(question8);
+      
+      System.out.println("If traffic is really slow and the road you want to get"
+              + " to is just the next\n block over is it okay to drive through people's"
+              + " yards to get to the road you want faster? \nEnter A for Yes, "
+              + "\nEnter B for No, \nEnter C for Maybe, \nEnter D for That's what "
+              + "4 wheel drive is made for! In case they have those annoying kids"
+              + " toys.");
+      System.out.println("\n9. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question9 = StringMethods.nullValidation();
+            studentAnswers.add(question9);
+      
+      System.out.println("When riding as a passenger is it okay to grab the driver's"
+              + " steering wheel? \nEnter A for Yes, \nEnter B for No, \nEnter C "
+              + "for Maybe, \nEnter D for Of course! That's how the best stories"
+              + " all start! Its hilarious!.");
+      System.out.println("\n10. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question10 = StringMethods.nullValidation();
+            studentAnswers.add(question10);
+      
+      System.out.println("When driving in Canada where the speed limits are in"
+              + " kilometers per an hour,\n is it okay to pretend the speed limits "
+              + "are actually in miles per an hour? \nEnter A for Yes, "
+              + "\nEnter B for No, \nEnter C for Maybe, \nEnter D for I'm American "
+              + "and I drive only in miles per hour, if they don't like it, well "
+              + "too bad.");
+      System.out.println("\n11. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question11 = StringMethods.nullValidation();
+            studentAnswers.add(question11);
+      
+      System.out.println("If your car runs on regular gas but diesel gas is cheaper\n"
+              + " at the gas station is it okay to fill your car with diesel? "
+              + "\nEnter A for Yes, \nEnter B for No, \nEnter C for Maybe, "
+              + "\nEnter D for Gas is gas man, it all burns. It wouldn't hurt to"
+              + " throw in some \nflammable alcohols like Everclear in there while "
+              + "you are at it.");
+      System.out.println("\n12. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question12 = StringMethods.nullValidation();
+            studentAnswers.add(question12);
+      
+      System.out.println("If there is a moose in the road that's bigger than your"
+              + " car should you just hit it? \nEnter A for Yes, "
+              + "\nEnter B for No, \nEnter C for Maybe, \nEnter D for Heck yea!"
+              + " And then field dress it for some steaks later.");
+      System.out.println("\n13. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question13 = StringMethods.nullValidation();
+            studentAnswers.add(question13);
+      
+      System.out.println("When you are driving and need to use the restroom \nis it"
+              + " okay to drive erratically while speeding to get there faster? "
+              + "\nEnter A for Yes, \nEnter B for No, \nEnter C for Maybe, "
+              + "\nEnter D for Oh man, no one would hold that against you, when "
+              + "you gotta go, you gotta go.");
+      System.out.println("\n14. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question14 = StringMethods.nullValidation();
+            studentAnswers.add(question14);
+      
+      System.out.println("Is it okay to chat on your cell phone while driving?"
+              + "\nEnter A for Yes, \nEnter B for No, \nEnter C for Maybe, "
+              + "\nEnter D for Everybody else is so you can too. The people who"
+              + " say it lowers your \nreaction time to worse than driving drunk"
+              + " clearly don't know how fun it is to drive drunk.");
+      System.out.println("\n15. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question15 = StringMethods.nullValidation();
+            studentAnswers.add(question15);
+      
+      System.out.println("If your car is making troubling sounds indicative "
+              + "of engine failure \nshould you take it by auto repair center or"
+              + " dealership to get it looked at? \nEnter A for Yes, \nEnter B "
+              + "for No, \nEnter C for Maybe, \nEnter D for You don't need to go"
+              + " to no Stealership! \nGet some premium gas next time you fill up"
+              + " and that should take care of it.");
+      System.out.println("\n16. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question16 = StringMethods.nullValidation();
+            studentAnswers.add(question16);
+      
+      System.out.println("While parked and filling up your vehicle with gas is"
+              + " it okay to smoke a cigarette? \nEnter A for Yes, \nEnter B for "
+              + "No, \nEnter C for Maybe, \nEnter D for Go for it, anytime the "
+              + "news reports someone doing that\n and them catching on fire it's"
+              + " always fake news. I've seen the movie Zoolander and that was\n "
+              + "all just special effects.");
+      System.out.println("\n17. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question17 = StringMethods.nullValidation();
+            studentAnswers.add(question17);
+      
+      System.out.println("If its raining heavily and the roads are slick should "
+              + "you slow down and drive to the conditions? \nEnter A for Yes, "
+              + "\nEnter B for No, \nEnter C for Maybe, \nEnter D for Heck no!"
+              + " Fishtailing and Hydroplaning are super fun and everyone should"
+              + " do them.");
+      System.out.println("\n18. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question18 = StringMethods.nullValidation();
+            studentAnswers.add(question18);
+      
+      System.out.println("When parked at a light is it a good idea to rev your "
+              + "engine\n and glare at the driver in the car beside you in hopes "
+              + "of a race? \nEnter A for Yes, \nEnter B for No, \nEnter C for "
+              + "Maybe, \nEnter D for Definently! You gotta show off your mad\n "
+              + "driving skills and sweet ride if you ever want to earn street "
+              + "cred.");
+      System.out.println("\n19. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question19 = StringMethods.nullValidation();
+            studentAnswers.add(question19);
+      
+      System.out.println("Do you need to keep your license, proof of insurance, "
+              + "and registration in your car at all times? \nEnter A for Yes, "
+              + "\nEnter B for No, \nEnter C for Maybe, \nEnter D for No Bro!"
+              + " You never need those things! \nRemember that if a cop ever starts "
+              + "following you \nwith his lights flashing you don't need to pull"
+              + " over\n so there is never any need to have those on hand.");
+      System.out.println("\n20. Enter your answer.");
+            //See comments on question1 for explanation of null validating.
+            question20 = StringMethods.nullValidation();
+            studentAnswers.add(question20);
+      
+    }
+    //This method returns the total number of correctly answered questions by
+    //iterating through the list using a for loop that compares the student
+    //answers with the answers key that holds the correct answers. Then
+    //it returns the number of correct answers.
+    public int totalCorrect(){
+        int correctCount = 0;
+        for (int i = 0; i < studentAnswers.size(); i++){
+            if (studentAnswers.get(i) == KEY.get(i)){          
+                correctCount++;
+            }       
+        }
+        return correctCount;          
+    }
+        //This is a boolean method that checks if the students answered the 
+        //minimum number of correct questions in order to pass, 15, and then 
+        //if they did it returns passed as true. If not it returns false.
+        public boolean passed(){
+            if(this.totalCorrect() >= 15){
+                return true;
+            }
+            else{
+                return false;
+           }  
+        }
+        //This method returns the total number of incorrect answers the 
+        //the student gave.
+        public int totalIncorrect(){
+            return LIMIT - this.totalCorrect(); 
+        }
+        //This method iterates through both the studentAnswers ArrayList 
+        //and the KEY ArrayList. Where ever studentAnswers differs from the
+        //answers in KEY the question number is stored in the questionsMissedArray
+        // array. Then it returns the questionsMissedArray array.
+        public int[] questionsMissed(){
+            int a = 0;
+            int[] questionsMissedArray = new int [20];
+            for (int i = 0; i < studentAnswers.size(); i++){
+                if (studentAnswers.get(i) != KEY.get(i)){
+                   questionsMissedArray[a] = (i + 1);
+                    a++;
+                }
+            }
+            return questionsMissedArray; 
+        }
+}
