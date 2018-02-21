@@ -1,0 +1,56 @@
+/* File Name: DriverExamTest
+ * Author: Luke Fitzsimmons
+ * Date: 3/1/2017
+ * Program Description:
+ * This is the test class for DriverExam. It only has one method and it calls 
+ * the DriverExam class. 
+ */
+package Lab2A;
+
+
+public class DriverExamTest {
+    //This is the main method and the only method in this class.
+    public static void main(String[] args){
+        
+           
+        int[] incorrectQuestionsArray; 
+        System.out.println("Welcome to the Driver exam, this is a very serious "
+                + "test \nso please consider the questions seriously before "
+                + "submitting your answer.");
+        
+         //Here 'test' is an object of the DriverExam class which will be called
+         //frequently in this class.
+         DriverExam test = new DriverExam();
+         
+         //Here test.getStudentAnswers recieves the getter method in the 
+         //DriverExam class because 'test' is an object of that class.
+         //Then it prints the answer.
+         System.out.println("You entered " + test.getStudentAnswers()); 
+         
+         //This calls the totalIncorrect method in the test object of DriverExam.
+         System.out.println("Total incorrect answers is " + test.totalIncorrect());
+         
+         //This is a for loop that iterates through the incorrectQuestionsArray
+         //and prints which individual questions were incorrect.
+         incorrectQuestionsArray = test.questionsMissed();
+         for(int i = 0; i < incorrectQuestionsArray.length; i++) {
+             if(incorrectQuestionsArray[i] != 0)
+            System.out.println("Question number " + incorrectQuestionsArray[i] + " was incorrect.");
+         }
+         //If the passed method in the test object of the DriverExam class returned
+         //true the student passes and recieved the passed print statement with grade.
+         if(test.passed()){
+             System.out.println("Congratulations! You got " + test.totalCorrect() + "/ 20"
+                     + "on the exam. You passed.");
+         }
+             //If the student did not pass they recieve the failed print statement
+             //along with their grade.
+             else{
+                System.out.println("\n\nSadly, you only got " + test.totalCorrect() + "/20"
+                        + " on the exam. You failed. \nPlease now take the walk of "
+                        + "shame out of the building and try again in 6 months.");
+         }
+         }
+    }
+        
+      
