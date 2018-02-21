@@ -1,0 +1,107 @@
+/* File Name: AlphabetCount
+ * Author: Luke Fitzsimmons
+ * Date: 3/1/2017
+ * Program Description: This is a program that reads a line of text from the 
+ * keyboard and prints a table that indicates the number of occurences of each
+ * letter of the alphabet in the text. It also shows the absence of any letters
+ * of the alphabet not present in the keyboard text.
+ */
+
+package Lab2B;
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class AlphabetCount 
+    {  //This is the main method.  
+   public static void main(String[] args)
+   {  //This is an ArrayList that will hold the user's input. 
+      ArrayList<String>  text = new ArrayList<>(); 
+      //This is an array that holds the 26 letters of the alphabet to be compared
+      //with the contents of the user's input.
+      int[] alphabet = new int[26];
+        for(int i = 0; i<26; i++){
+            alphabet[i] = 0;
+        }
+      //Declaring variables.  
+      String name;
+      String userInput;
+      Scanner scan = new Scanner(System.in);
+            
+          name = ("Please enter a line of text to be evaulated. ");
+          //This is a println that prints the content of the String 'name'.
+          System.out.println(name);
+          userInput = scan.nextLine();
+          //Here are the means of evaluating how many occurences of each letter
+          //of upper and lower case is present in the user's input.
+        for (int i = 0; i<userInput.length(); i++){
+            if(userInput.charAt(i) == 'a' || userInput.charAt(i) =='A'){
+                alphabet[0]++;}
+            else if(userInput.charAt(i) == 'b' || userInput.charAt(i) =='B'){
+                alphabet[1]++;}
+            else if(userInput.charAt(i) == 'c' || userInput.charAt(i) =='C'){
+                alphabet[2]++;}
+            else if(userInput.charAt(i) == 'd' || userInput.charAt(i) =='D'){
+                alphabet[3]++;}
+            else if(userInput.charAt(i) == 'e' || userInput.charAt(i) =='E'){
+                alphabet[4]++;}
+            else if(userInput.charAt(i) == 'f' || userInput.charAt(i) =='F'){
+                alphabet[5]++;}
+            else if(userInput.charAt(i) == 'g' || userInput.charAt(i) =='G'){
+                alphabet[6]++;}
+            else if(userInput.charAt(i) == 'h' || userInput.charAt(i) =='H'){
+                alphabet[7]++;}
+            else if(userInput.charAt(i) == 'i' || userInput.charAt(i) =='I'){
+                alphabet[8]++;}
+            else if(userInput.charAt(i) == 'j' || userInput.charAt(i) =='J'){
+                alphabet[9]++;}
+            else if(userInput.charAt(i) == 'k' || userInput.charAt(i) =='K'){
+                alphabet[10]++;}
+            else if(userInput.charAt(i) == 'l' || userInput.charAt(i) =='L'){
+                alphabet[11]++;}
+            else if(userInput.charAt(i) == 'm' || userInput.charAt(i) =='M'){
+                alphabet[12]++;}
+            else if(userInput.charAt(i) == 'n' || userInput.charAt(i) =='N'){
+                alphabet[13]++;}
+            else if(userInput.charAt(i) == 'o' || userInput.charAt(i) =='O'){
+                alphabet[14]++;}
+            else if(userInput.charAt(i) == 'p' || userInput.charAt(i) =='P'){
+                alphabet[15]++;}
+            else if(userInput.charAt(i) == 'q' || userInput.charAt(i) =='Q'){
+                alphabet[16]++;}
+            else if(userInput.charAt(i) == 'r' || userInput.charAt(i) =='R'){
+                alphabet[17]++;}
+            else if(userInput.charAt(i) == 's' || userInput.charAt(i) =='S'){
+                alphabet[18]++;}
+            else if(userInput.charAt(i) == 't' || userInput.charAt(i) =='T'){
+                alphabet[19]++;}
+            else if(userInput.charAt(i) == 'u' || userInput.charAt(i) =='U'){
+                alphabet[20]++;}
+            else if(userInput.charAt(i) == 'v' || userInput.charAt(i) =='V'){
+                alphabet[21]++;}
+            else if(userInput.charAt(i) == 'w' || userInput.charAt(i) =='W'){
+                alphabet[22]++;}
+            else if(userInput.charAt(i) == 'x' || userInput.charAt(i) =='X'){
+                alphabet[23]++;}
+            else if(userInput.charAt(i) == 'y' || userInput.charAt(i) =='Y'){
+                alphabet[24]++;}
+            else if (userInput.charAt(i) == 'z' || userInput.charAt(i) =='Z'){
+                alphabet[25]++;}               
+        }
+        //Here the if statement is casting an int into a char. 
+            text.add(userInput);     
+            for (int i = 0; i<26; i++){
+                if(alphabet[i] != 0) {
+                    //This println shows how many occurences of each letter of the 
+                    //alphabet are present in the user's input.
+                    System.out.println("You have " + alphabet[i] + " " + (char)(i+65));
+                }
+                //Here the else statement prints all of the characters that are 
+                //absent from the user's input.
+                else
+                    System.out.println("The following letter is absent " + (char)(i+65));
+            }
+        //This prints the characters in the user's input.
+        System.out.println("Your characters are " + text);
+      
+}
+}
